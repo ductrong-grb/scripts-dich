@@ -1,0 +1,65 @@
+# ═══════════════════════════════════════════════════════════════
+#  video-hardsub-translator — 忽略规则
+#  原则：只把「项目本身」入库；本地快照、个人文件、调试脚本、
+#        测试中间产物和任何凭据一律排除在外。
+# ═══════════════════════════════════════════════════════════════
+
+# ── 本地版本快照 / 个人文件（仅本机保留）─────────────────────
+_backup/
+.bili/
+dsh-upgrade/
+# DSH 工具链产物：本机环境的东西，不属于本项目
+dsh-plugins/
+dsh-browser-agent-install/
+
+# 早期版本的独立副本：历史版本请走 releases / git 历史，
+# 不再往仓库里堆一份 177KB 的旧脚本
+video-hardsub-translator1.user.js
+
+# ── 一次性调试脚本（不属于项目，仅作者本机用过）──────────────
+/_cdp_verify.mjs
+/_netcheck.mjs
+/_youdao_probe.mjs
+/_ytdiag.mjs
+# 量「字幕截图在各级 JPEG 质量下的体积」用（验证「0.9 是否过高」那条提议）
+/_jpeg_probe.mjs
+# 把面板真实渲染出来、导出「使用说明」全文，用于人工核对其文案
+/_ui_check.mjs
+# 从 docs/greasyfork-listing.md 抽出的「发布正文」，供手工粘贴到 Greasy Fork
+/_greasyfork-paste.md
+
+# ── 参考用的第三方项目克隆 ──────────────────────────────────
+# LunaTranslator（HIllya51/LunaTranslator）是本地拉下来做翻译路线调研的参考源码，
+# 不是本项目的一部分：1490 个文件 / 约 11 MB，且版权属于对方。要看请自己 clone。
+LunaTranslator/
+
+# ── 测试运行产生的中间产物 ──────────────────────────────────
+_test/_ab.json
+_test/_ab-summary.json
+_test/_bench-last.json
+_test/_sample-bench.json
+_test/_opt.txt
+# 测试启动时会从 _test/vendor/ 和 _test/fixtures/ 复制到这里
+_test/pages/hls.min.js
+_test/pages/fixtures/
+
+# ── 凭据与密钥（绝对不要入库）───────────────────────────────
+.secrets/
+.env
+.env.*
+*.token
+gh-token*.txt
+*.pem
+
+# ── 编辑器 / 操作系统 ───────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+Thumbs.db
+desktop.ini
+*~
+
+# ── 日志 / 依赖 ─────────────────────────────────────────────
+*.log
+node_modules/
+npm-debug.log*
